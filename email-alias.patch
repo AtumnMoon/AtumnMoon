@@ -1,0 +1,17 @@
+diff --git a/index.html b/index.html
+index dfe4ed9..1a8d1a5 100644
+--- a/index.html
++++ b/index.html
+@@ -153 +153 @@
+-							<a href="mailto:olleresjayandrei@gmail.com">olleresjayandrei@gmail.com</a>
++							<a href="mailto:professional.idealness553@slmail.me">professional.idealness553@slmail.me</a>
+@@ -157 +157 @@
+-					<form class="contact-form" action="mailto:olleresjayandrei@gmail.com" method="post" enctype="text/plain">
++					<form class="contact-form" action="mailto:professional.idealness553@slmail.me" method="post" enctype="text/plain">
+diff --git a/scripts/main.js b/scripts/main.js
+index 2f97fb5..f753623 100644
+--- a/scripts/main.js
++++ b/scripts/main.js
+@@ -44 +44 @@ document.querySelector(".contact-form")?.addEventListener("submit", (event) => {
+-		`mailto:olleresjayandrei@gmail.com?subject=${encodeURIComponent(`Portfolio message from ${name}`)}` +
++		`mailto:professional.idealness553@slmail.me?subject=${encodeURIComponent(`Portfolio message from ${name}`)}` +

@@ -41,6 +41,6 @@ document.querySelector(".contact-form")?.addEventListener("submit", (event) => {
 	const name = `${data.get("first-name")} ${data.get("last-name")}`.trim();
 	const body = `${data.get("message")}\n\n${name}\n${data.get("email")}`;
 	location.href =
-		`mailto:olleresjayandrei@gmail.com?subject=${encodeURIComponent(`Portfolio message from ${name}`)}` +
+		`mailto:professional.idealness553@slmail.me?subject=${encodeURIComponent(`Portfolio message from ${name}`)}` +
 		`&body=${encodeURIComponent(body)}`;
 });

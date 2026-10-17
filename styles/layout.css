@@ -1,0 +1,148 @@
+@layer layout {
+  .shell {
+    inline-size: min(100% - 2 * var(--space-3), var(--shell));
+    margin-inline: auto;
+  }
+
+  /* Header */
+  .site-header {
+    padding-block: var(--space-2);
+  }
+
+  .site-header > .shell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  header > .shell > nav {
+    display: grid;
+    justify-self: end;
+  }
+
+  menu.nav-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    gap: 1rem;
+  }
+
+  /* Views (About / Projects / Contact) */
+  main {
+    container: main / inline-size;
+    padding-block: var(--space-4);
+  }
+
+  .view {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  /* About */
+  #intro-card {
+    display: grid;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .intro-copy {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-block-start: var(--space-1);
+  }
+
+  .social {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .social-list {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  /* Projects */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-3);
+  }
+
+  .project-grid > li { display: grid; }
+
+  /* Contact */
+  .contact-layout {
+    display: grid;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .contact-copy {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: start;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: end;
+  }
+
+  .contact-form > .field { justify-self: stretch; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+    justify-self: stretch;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding-block: var(--space-3);
+    color: var(--muted);
+    font-size: 0.8em;
+  }
+
+  /* Wide: two-column About and Contact */
+  @container main (min-width: 48rem) {
+    #intro-card { grid-template-columns: 1fr 1fr; }
+    .contact-layout { grid-template-columns: 1fr 1.2fr; }
+    .project-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Narrow: centred, stacked, icon-only nav (like the mobile Figma frame) */
+  @container main (max-width: 47.99rem) {
+    #intro-card { text-align: center; }
+    .portrait { order: -1; max-inline-size: 16rem; margin-inline: auto; }
+    .intro-copy { justify-items: center; }
+    .cta-row { justify-content: center; }
+    .social { flex-direction: column; }
+    .view-title { text-align: center; }
+    .contact-copy { justify-items: center; text-align: center; }
+  }
+
+  @media (max-width: 40rem) {
+    /* Keep the name for screen readers: the logo image has no text alternative */
+    .brand-name {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+    .site-header > .shell { flex-wrap: nowrap; }
+  }
+}

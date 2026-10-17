@@ -1,0 +1,3 @@
+[tools]
+"npm:@olrtg/emmet-language-server" = "2.8.0"
+"npm:@t1ckbase/vscode-langservers-extracted" = "2.0.5"

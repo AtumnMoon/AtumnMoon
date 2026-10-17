@@ -1,0 +1,90 @@
+/* Cascade order for the whole site. Later layers win over earlier ones. */
+@layer reset, tokens, base, layout, components, utilities;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; }
+  html { -webkit-text-size-adjust: none; text-size-adjust: none; }
+  img, svg, picture { display: block; max-width: 100%; }
+  input, button, textarea { font: inherit; color: inherit; }
+  ul, menu { padding: 0; list-style: none; }
+  textarea { resize: vertical; }
+}
+
+@layer tokens {
+  :root {
+    color-scheme: dark;
+
+    /* Palette (OKLCH keeps the greens perceptually even) */
+    --bg:        oklch(0.17 0.02 155);
+    --surface:   oklch(0.27 0.03 155);
+    --surface-2: oklch(0.22 0.025 155);
+    --border:    oklch(0.38 0.04 150);
+    --text:      oklch(0.92 0.02 140);
+    --muted:     oklch(0.75 0.04 145);
+    --heading:   oklch(0.82 0.09 142);
+    --accent:    oklch(0.62 0.09 145);
+    --accent-ink: oklch(0.14 0.02 155);
+
+    /* Type */
+    --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+    --step-0: clamp(0.875rem, 0.84rem + 0.2vw, 1rem);
+    --step-1: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+    --step-2: clamp(1.25rem, 1.1rem + 0.8vw, 1.75rem);
+    --step-3: clamp(1.75rem, 1.4rem + 1.8vw, 2.75rem);
+
+    /* Spacing and shape */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2.5rem;
+    --radius: 0.5rem;
+    --shell: 70rem;
+  }
+}
+
+@layer base {
+  html { scroll-padding-top: var(--space-4); }
+
+  body {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-serif);
+    font-size: var(--step-0);
+    line-height: 1.7;
+  }
+
+  h1, h2, h3 { line-height: 1.2; text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  a { color: inherit; text-underline-offset: 0.25em; }
+
+  :focus-visible {
+    outline: 2px solid var(--heading);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Headings are focused by script after a view switch so no ring needed */
+  [tabindex="-1"]:focus { outline: none; }
+}
+
+@layer utilities {
+  .visually-hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* `hidden` must beat any display value set in other layers */
+  [hidden] { display: none !important; }
+}
